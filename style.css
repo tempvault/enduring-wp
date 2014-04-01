@@ -1,0 +1,982 @@
+/*
+Theme Name: Enduring
+Theme URI: http://github.com/tempvault/enduring-wp
+Author: B McCulley
+Author URI: http://tempvault.com/
+Description: A beautiful minimalist theme; featuring a customizable background and menu. The menu is also sticky.
+Version: 0.1
+License: GNU General Public License
+License URI: license.txt
+Tags: custom-menu, sticky-post, microformats, rtl-language-support, translation-ready, full-width-template, post-formats
+
+*/
+
+/* =Structure
+-------------------------------------------------------------- */
+
+#page {
+	background: #fff;
+	display: block;
+	margin: 20px auto;
+    max-width: 700px;
+    -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+        border-radius: 6px;
+}
+#primary {
+	float: left;
+	margin: 0 20px;
+	max-width: 660px;
+	padding-bottom: 24px;
+
+	width: 100%;
+}
+#colophon {
+	clear: both;
+	display: block;
+	width: 100%;
+}
+#primary.full-width {
+	float: none;
+	margin: 0 auto;
+	width: 640px;
+}
+
+/* Increase the size of the content area for templates without sidebars */
+.full-width #content,
+.image-attachment #content,
+.error404 #content {
+	margin: 0;
+}
+
+/* Text meant only for screen readers */
+.screen-reader-text,
+.assistive-text {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* Alignment */
+.alignleft {
+	display: inline;
+	float: left;
+}
+.alignright {
+	display: inline;
+	float: right;
+}
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* =Global Elements
+-------------------------------------------------------------- */
+
+/* Main global 'theme' and typographic styles */
+body {
+	background: #bdc3c7;
+	padding: 0;
+	margin: 0;
+}
+body,
+input,
+textarea {
+	color: #333;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+}
+hr {
+	background-color: #e7e7e7;
+	border: 0;
+	clear: both;
+	height: 1px;
+	margin-bottom: 18px;
+}
+
+/* Text elements */
+p {
+	margin-bottom: 18px;
+}
+ul {
+	list-style: square;
+	margin: 0 0 18px 1.5em;
+}
+ol {
+	list-style: decimal;
+	margin: 0 0 18px 1.5em;
+}
+ol ol {
+	list-style: upper-alpha;
+}
+ol ol ol {
+	list-style: lower-roman;
+}
+ol ol ol ol {
+	list-style: lower-alpha;
+}
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+	margin-bottom: 0;
+}
+dl {
+	margin: 0 0 24px 0;
+}
+dt {
+	font-weight: bold;
+}
+dd {
+	margin-bottom: 18px;
+}
+strong {
+	font-weight: bold;
+}
+cite,
+em,
+i {
+	font-style: italic;
+}
+big {
+	font-size: 131.25%;
+}
+ins {
+	background: #ffc;
+	text-decoration: none;
+}
+blockquote {
+	font-style: italic;
+	padding: 0 3em;
+}
+blockquote cite,
+blockquote em,
+blockquote i {
+	font-style: normal;
+}
+pre {
+	background: #f7f7f7;
+	color: #222;
+	line-height: 18px;
+	margin-bottom: 18px;
+	overflow: auto;
+	padding: 1.5em;
+}
+abbr,
+acronym {
+	border-bottom: 1px dotted #666;
+	cursor: help;
+}
+sup,
+sub {
+	height: 0;
+	line-height: 1;
+	position: relative;
+	vertical-align: baseline;
+}
+sup {
+	bottom: 1ex;
+}
+sub {
+	top: .5ex;
+}
+small {
+	font-size: smaller;
+}
+input[type="submit"] {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.428571429;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	border: 1px solid transparent;
+	border-radius: 3px;
+	-webkit-user-select: none;
+		 -moz-user-select: none;
+			-ms-user-select: none;
+			 -o-user-select: none;
+					user-select: none;
+}
+
+input[type="submit"]:focus {
+	outline: thin dotted #333;
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+	color: #333333;
+	text-decoration: none;
+}
+
+input[type="submit"]:active,
+input[type="submit"].active {
+	background-image: none;
+	outline: 0;
+	-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+					box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+textarea {
+	border: 1px solid #ccc;
+	padding: 4px;
+	-webkit-box-shadow: inset 1px 2px 2px rgba(0,0,0,0.3);
+		-moz-box-shadow: inset 1px 2px 2px rgba(0,0,0,0.3);
+			box-shadow: inset 1px 2px 2px rgba(0,0,0,0.3);
+	-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+			border-radius: 4px;
+}
+a {
+    color: #428bca;
+    text-decoration: none;
+}
+a:hover,
+a:focus {
+    color: #e74c3c;
+    text-decoration: underline;
+}
+
+/* Text meant only for screen readers */
+.screen-reader-text {
+	position: absolute;
+	left: -9333px;
+}
+
+/* =Header
+-------------------------------------------------------------- */
+
+#branding {
+	background-color: #3498db;
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3498db), to(#2980b9));
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    background-repeat: repeat-x;
+    min-height: 168px;
+    -webkit-border-radius: 6px 6px 0 0;
+        -moz-border-radius: 6px 6px 0 0;
+            border-radius: 6px 6px 0 0;
+}
+#site-title,
+#site-title a,
+#site-title a:hover {
+	color: #fff;
+    float: left;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 30px 0 4px 10px;
+    text-decoration: none;
+    text-shadow: 2px 2px 2px rgba(53,53,53, 1);
+}
+#site-description {
+	color: #fff;
+	clear: both;
+	float: left;
+	font-size: 12px;
+	font-style: italic;
+	font-weight: normal;
+	margin: 10px 0 0 26px;
+	padding-bottom: 21px;
+}
+
+
+/* =Menu
+-------------------------------------------------------------- */
+
+#access {
+    background: #ecf0f1;
+	display: block;
+	float: left;
+	margin: 2.5em auto 0;
+	max-width: 700px;
+	width: 100%;
+	z-index: 99999;
+}
+#access.fixedMenu {
+    border-top: none;
+    margin-top: 0;
+	position: fixed;
+	top: 0px;
+}
+#access ul {
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+#access li {
+	float: left;
+	position: relative;
+}
+#access a {
+	color: #222;
+	display: block;
+	line-height: 2.5em;
+	padding: 0 1em;
+	text-decoration: none;
+}
+#access ul ul {
+	display: none;
+	float: left;
+	position: absolute;
+	top: 2.5em;
+	left: 0;
+	z-index: 99999;
+	-webkit-box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+		-moz-box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+			box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+}
+#access ul ul ul {
+	left: 100%;
+	top: 0;
+}
+#access ul ul a {
+	background: #dedede;
+	line-height: 1em;
+	padding: .5em .5em .5em 1em;
+	width: 10em;
+	height: auto;
+}
+#access li:hover > a,
+#access ul ul :hover > a {
+	background: #333;
+	color: #fff;
+}
+#access ul ul a:hover {
+	background: #cecece;
+	color: #333;
+}
+#access ul li:hover > ul {
+	display: block;
+}
+
+
+/* =Content
+-------------------------------------------------------------- */
+
+#main #content {
+	padding-top: 24px;
+}
+#content,
+#content input,
+#content textarea {
+	font-size: 14px;
+}
+#content p,
+#content ul,
+#content ol,
+#content dd,
+#content pre,
+#content hr {
+	margin-bottom: 24px;
+}
+#content ul ul,
+#content ol ol,
+#content ul ol,
+#content ol ul {
+	margin-bottom: 0;
+}
+#content pre,
+#content kbd,
+#content tt,
+#content var {
+	font-size: 15px;
+	line-height: 21px;
+}
+#content code {
+	font-size: 13px;
+}
+#content dt,
+#content th {
+	color: #333;
+}
+#content h1,
+#content h2,
+#content h3,
+#content h4,
+#content h5,
+#content h6 {
+	color: #333;
+	line-height: 1.5em;
+	margin: 0 0 20px 0;
+}
+#content table {
+	border: 1px solid #e7e7e7;
+	margin: 0 -1px 24px 0;
+	text-align: left;
+	max-width: 100%;
+}
+#content tr th,
+#content thead th {
+	color: #888;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 18px;
+	padding: 9px 20px;
+}
+#content tr td {
+	border-top: 1px solid #e7e7e7;
+	padding: 6px 20px;
+}
+#content tr.odd td {
+	background: #f2f7fc;
+}
+.hentry {
+	margin: 0 0 48px 0;
+}
+.home .sticky {
+	background: #f2f7fc;
+	padding: 18px 20px;
+}
+.single .hentry {
+	margin: 0 0 36px 0;
+}
+.page-title {
+	color: #333;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0 0 36px 0;
+}
+.page-title span {
+	color: #333;
+	font-size: 16px;
+	font-style: italic;
+	font-weight: normal;
+}
+.page-title a:link,
+.page-title a:visited {
+	color: #888;
+	text-decoration: none;
+}
+.page-title a:active,
+.page-title a:hover {
+	color: #06c;
+}
+#content .entry-title {
+	color: #333;
+	font-size: 23px;
+	font-weight: bold;
+	line-height: 1.4em;
+	margin-bottom: 0;
+}
+.entry-title a:link,
+.entry-title a:visited {
+	color: #333;
+	text-decoration: none;
+}
+.entry-title a:active,
+.entry-title a:hover {
+	color: #e74c3c;
+}
+.entry-meta {
+	color: #888;
+	font-size: 10px;
+}
+.entry-meta abbr,
+.entry-utility abbr {
+	border: none;
+}
+.entry-meta abbr:hover,
+.entry-utility abbr:hover {
+	border-bottom: 1px dotted #666;
+}
+.entry-content,
+.entry-summary {
+	clear: both;
+	padding: 12px 0 0 0;
+}
+#content .entry-summary p:last-child {
+	margin-bottom: 12px;
+}
+.entry-content fieldset {
+	border: 1px solid #e7e7e7;
+	margin: 0 0 24px 0;
+	padding: 24px;
+}
+.entry-content fieldset legend {
+	background: #fff;
+	color: #333;
+	font-weight: bold;
+	padding: 0 24px;
+}
+.entry-content input {
+	margin: 0 0 24px 0;
+}
+.entry-content input.file,
+.entry-content input.button {
+	margin-right: 24px;
+}
+.entry-content label {
+	color: #888;
+	font-size: 12px;
+}
+.entry-content select {
+	margin: 0 0 24px 0;
+}
+.entry-content sup,
+.entry-content sub {
+	font-size: 10px;
+}
+.entry-content blockquote.left {
+	float: left;
+	margin-left: 0;
+	margin-right: 24px;
+	text-align: right;
+	width: 33%;
+}
+.entry-content blockquote.right {
+	float: right;
+	margin-left: 24px;
+	margin-right: 0;
+	text-align: left;
+	width: 33%;
+}
+.page-link {
+	clear: both;
+	color: #333;
+	font-weight: bold;
+	line-height: 48px;
+	word-spacing: 0.5em;
+}
+.page-link a:link,
+.page-link a:visited {
+	background: #f1f1f1;
+	color: #333;
+	font-weight: normal;
+	padding: 0.5em 0.75em;
+	text-decoration: none;
+}
+.home .sticky .page-link a {
+	background: #d9e8f7;
+}
+.page-link a:active,
+.page-link a:hover {
+	color: #e74c3c;
+}
+body.page .edit-link {
+	clear: both;
+	display: block;
+}
+#entry-author-info {
+	background: #f2f7fc;
+	clear: both;
+	font-size: 14px;
+	line-height: 20px;
+	margin: 24px 0;
+	overflow: hidden;
+	padding: 18px 20px;
+}
+#entry-author-info #author-avatar {
+	background: #fff;
+	border: 1px solid #e7e7e7;
+	float: left;
+	height: 60px;
+	margin: 0 -104px 0 0;
+	padding: 11px;
+}
+#entry-author-info #author-description {
+	float: left;
+	margin: 0 0 0 104px;
+}
+#entry-author-info h2 {
+	color: #333;
+	font-size: 100%;
+	font-weight: bold;
+	margin-bottom: 0;
+}
+.entry-utility {
+	clear: both;
+	color: #888;
+	font-size: 12px;
+	line-height: 18px;
+}
+.entry-meta a,
+.entry-utility a {
+	color: #888;
+}
+.entry-meta a:hover,
+.entry-utility a:hover {
+	color: #e74c3c;
+}
+#content .video-player {
+	padding: 0;
+}
+
+
+/* =Images
+-------------------------------------------------------------- */
+
+a img {
+	border: none;
+}
+p img {
+	margin-bottom: 0.5em; /* a small bottom margin prevents content floating under images */
+}
+/*
+Resize images to fit the main content area.
+- Applies only to images uploaded via WordPress by targeting size-* classes.
+- Other images will be left alone. Use "size-auto" class to apply to other images.
+*/
+img.size-auto,
+img.size-full,
+img.size-large,
+img.size-medium,
+.attachment img,
+.widget-area img,
+.wp-caption {
+	max-width: 100%; /* When images are too wide for containing element, force them to fit. */
+	height: auto; /* Override height to match resized width for correct aspect ratio. */
+}
+img.alignleft {
+	margin-right: 1em;
+}
+img.alignright {
+	margin-left: 1em;
+}
+.wp-caption {
+	background: #f1f1f1;
+	border: 1px solid #ccc; 
+	line-height: 18px;
+	margin: 2px 5px 20px 5px;
+	max-width: 680px !important;
+	padding: 4px;
+	text-align: center;
+}
+img,
+.wp-caption img {
+	height: auto;
+	margin: 5px 5px 0;
+	max-width: 662px;
+}
+.wp-caption .wp-caption-text {
+	margin: .5em;
+}
+.gallery-caption {
+}
+.wp-smiley {
+	margin: 0;
+}
+
+/* =Navigation
+-------------------------------------------------------------- */
+
+.navigation {
+	color: #888;
+	font-size: 12px;
+	line-height: 18px;
+	overflow: hidden;
+}
+.navigation a:link,
+.navigation a:visited {
+	color: #888;
+	text-decoration: none;
+}
+.navigation a:active,
+.navigation a:hover {
+	color: #06c;
+}
+.nav-previous {
+	float: left;
+	width: 50%;
+}
+.nav-next {
+	float: right;
+	text-align: right;
+	width: 50%;
+}
+#nav-above {
+	margin: 0 0 38px 0;
+}
+#nav-above {
+	display: none;
+}
+.paged #nav-above,
+.single #nav-above {
+	display: block;
+}
+#nav-below {
+	margin: -18px 0 0 0;
+}
+
+/* =Forms
+-------------------------------------------------------------- */
+
+#searchform label {
+	display: none;
+}
+#searchform input#s {
+	width: 56%;
+}
+#searchform input[type="submit"] {
+	padding: 4px 10px;
+	font-size: 10px;
+}
+input[type=text],
+input#s {
+	margin: 0 1em 0 0;
+	width: 60%;
+}
+textarea {
+	width: 80%;
+}
+
+/* Class for labelling required form items */
+.required {
+	color: #cc0033;
+}
+
+
+/* =Comments
+-------------------------------------------------------------- */
+
+#comments {
+	clear: both;
+}
+#comments .navigation {
+	padding: 0 0 18px 0;
+}
+h3#comments-title,
+h3#reply-title {
+	color: #333;
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 0;
+}
+h3#comments-title {
+	padding: 24px 0;
+}
+.commentlist {
+	list-style: none;
+	margin: 0;
+}
+.commentlist li.comment {
+	border-bottom: 1px solid #e7e7e7;
+	line-height: 24px;
+	margin: 0 0 24px 0;
+	padding: 0 0 0 56px;
+	position: relative;
+}
+.commentlist .children li.comment {
+	margin: 1.625em 0 0;
+	padding: 1.625em;
+	position: relative;
+}
+.commentlist .children .fn {
+	padding-left: 40px;
+}
+.commentlist li:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+}
+#comments .comment-body ul,
+#comments .comment-body ol {
+	margin-bottom: 18px;
+}
+#comments .comment-body p:last-child {
+	margin-bottom: 6px;
+}
+#comments .comment-body blockquote p:last-child {
+	margin-bottom: 24px;
+}
+.commentlist ol {
+	list-style: decimal;
+}
+.commentlist .avatar {
+	position: absolute;
+	top: 4px;
+	left: 0;
+}
+.comment-author {
+}
+.comment-author cite {
+	color: #333;
+	font-style: normal;
+	font-weight: bold;
+}
+.comment-author .says {
+	font-style: italic;
+}
+.comment-meta {
+	font-size: 12px;
+	margin: 0 0 18px 0;
+}
+.comment-meta a:link,
+.comment-meta a:visited {
+	color: #777;
+	text-decoration: none;
+}
+.comment-meta a:active,
+.comment-meta a:hover {
+	color: #ff4b33;
+}
+.commentlist .even {
+}
+.commentlist .bypostauthor {
+}
+.reply {
+	font-size: 12px;
+	padding: 0 0 24px 0;
+}
+.reply a,
+a.comment-edit-link {
+	color: #777;
+}
+.reply a:hover,
+a.comment-edit-link:hover {
+	color: #ff4b33;
+}
+.commentlist .children {
+	list-style: none;
+	margin: 0;
+}
+.commentlist .children li {
+	border: none;
+	margin: 0;
+}
+.nopassword,
+.nocomments {
+	display: none;
+}
+#comments .pingback {
+	border-bottom: 1px solid #e7e7e7;
+	margin-bottom: 18px;
+	padding-bottom: 18px;
+}
+.commentlist li.comment+li.pingback {
+	margin-top: -6px;
+}
+#comments .pingback p {
+	color: #777;
+	display: block;
+	font-size: 12px;
+	line-height: 18px;
+	margin: 0;
+}
+#comments .pingback .url {
+	font-size: 13px;
+	font-style: italic;
+}
+
+/* Comments form */
+input[type="submit"] {
+	color: #333;
+}
+#respond {
+	border-top: 1px solid #e7e7e7;
+	margin: 24px 0;
+	overflow: hidden;
+	position: relative;
+}
+#respond p {
+	margin: 0;
+}
+#respond .comment-notes {
+	margin-bottom: 1em;
+}
+.form-allowed-tags {
+	line-height: 1em;
+}
+.children #respond {
+	margin: 0 48px 0 0;
+}
+h3#reply-title {
+	margin: 18px 0;
+}
+#comments-list #respond {
+	margin: 0 0 18px 0;
+}
+#comments-list ul #respond {
+	margin: 0;
+}
+#cancel-comment-reply-link {
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 18px;
+}
+#respond .required {
+	color: #ff4b33;
+	font-weight: bold;
+}
+#respond label {
+	color: #777;
+	font-size: 12px;
+}
+#respond input {
+	margin: 0 0 9px;
+	width: 98%;
+}
+#respond textarea {
+	width: 98%;
+}
+#respond .form-allowed-tags {
+	color: #777;
+	font-size: 12px;
+	line-height: 18px;
+}
+#respond .form-allowed-tags code {
+	font-size: 11px;
+}
+#respond .form-submit {
+	margin: 12px 0;
+}
+#respond .form-submit input {
+	font-size: 14px;
+	width: auto;
+}
+
+
+/* =Footer
+-------------------------------------------------------------- */
+
+#colophon {
+	background-color: #7f8c8d;
+    border-top: 1px solid #ccc;
+    clear: both;
+    color: #fff;
+	min-height: 30px;
+	padding: 1em 0 0;
+    -webkit-border-radius: 0 0 6px 6px;
+        -moz-border-radius: 0 0 6px 6px;
+            border-radius: 0 0 6px 6px;
+}
+#colophon a { 
+	color: #fff;
+	text-decoration: none;
+}
+#colophon a:hover {
+	color: #333; 
+	text-decoration: underline; 
+}
+#site-info {
+	float: left;
+	margin-left: 12px;
+}
+#site-generator {
+	float: right;
+	margin-right: 12px;
+}
+#design-link a {
+    color: #fff;
+    text-decoration: none;
+}
+#design-link a:hover,
+#design-link a:focus {
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 1);
+    text-decoration: none;
+}
